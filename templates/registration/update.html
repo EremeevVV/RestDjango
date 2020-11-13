@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+    <h1>Update</h1>
+    </div>
+              <form method="post">
+              {% csrf_token %}
+<div class="row justify-content-center">
+    <div class="col-4">
+                        {{ form.intial.email }}
+            <img class="photo" src="{% static '/images/usernophoto.jpg' %}" width=150, height=200 border=2>
+      </div>
+    <div class="col-7">
+      <div class="card">
+        <div class="card-body">
+                <table>
+ {{ form.as_table }}
+</table>
+
+            <button type="submit" class="btn btn-primary">Sign up</button>
+            <a href="{% url 'home' %}" class="btn btn-secodary">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </div>
+              </form>
+{% endblock %}

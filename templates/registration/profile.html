@@ -1,0 +1,42 @@
+ {% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    </div>
+
+                  <h1>Username</h1>
+<div class="row justify-content-center">
+    <div class="col-4">
+
+
+            <img class="photo" src="{% static '/images/usernophoto.jpg' %}" width=150, height=200 border=2>
+      </div>
+    <div class="col-7">
+      <div class="card">
+        <div class="card-body">
+                <table>
+                     <tr style="background-color:grey">Login information</tr>
+                    <tr>Email: </tr>
+                    <tr>Password: </tr>
+                </table>
+                <table>
+                    <tr>First Name: </tr>
+                    <tr>Last Name: </tr>
+                    <tr>Country: </tr>
+                    <tr>About: </tr>
+                </table>
+                <table>
+
+                    <tr>Personal Identification Number</tr>
+                    <tr>PIN:</tr>
+                </table>
+            <button type="submit" class="btn btn-primary">Ok</button>
+            <a href="{% url 'home' %}" class="btn btn-secodary">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
