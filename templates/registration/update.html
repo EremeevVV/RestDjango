@@ -4,27 +4,49 @@
 
 {% block content %}
     <div class="row">
-    <h1>Update</h1>
+        <h2> {{ form.instance.email }}/Profile</h2>
+
     </div>
-              <form method="post">
+              <form method="post" enctype="multipart/form-data">
               {% csrf_token %}
 <div class="row justify-content-center">
     <div class="col-4">
-                        {{ form.intial.email }}
+    <table>
+        <tr><td>
+        {% if form.instance.photo %}
+            <img class="photo" src="{% static form.instance.photo.url %}" width=150, height=200 border=3>
+        {% else %}
             <img class="photo" src="{% static '/images/usernophoto.jpg' %}" width=150, height=200 border=2>
+        {% endif %}
+        </td></tr>
+        <tr><td>
+            <button type="button" name="photo-clear" id="photo-clear_id" class="btn btn-primary">Delete</button>
+            </td></tr>
+            <tr><td>
+        <input type="file" name="photo" accept="image/*" id="id_photo" >
+            </td></tr>
+    </table>
       </div>
     <div class="col-7">
       <div class="card">
         <div class="card-body">
                 <table>
- {{ form.as_table }}
-</table>
+                        <tr>
+                            <td></td>
+                        </tr>
+     <tr><th><label for="id_first_name">First name:</label></th><td><input type="text" name="first_name" value="{{ form.instance.first_name }}" maxlength="30" required id="id_first_name"></td></tr>
+    <tr><th><label for="id_last_name">Last name:</label></th><td><input type="text" name="last_name" value="{{ form.instance.last_name }}" maxlength="30" required id="id_last_name"></td></tr>
+   <tr><th><label for="id_country">Country:</label></th><td><input type="text" name="country" value="{{ form.instance.country }}" maxlength="30" required id="id_country"></td></tr>
 
-            <button type="submit" class="btn btn-primary">Sign up</button>
+    <tr><th><label for="id_about">About:</label></th><td><textarea name="about" cols="40" rows="10" maxlength="300" id="id_about" value="{{ form.instance.about }}">
+    </textarea></td></tr>
+</table>
+            <button type="submit" class="btn btn-primary">Update</button>
             <a href="{% url 'home' %}" class="btn btn-secodary">Cancel</a>
         </div>
       </div>
     </div>
   </div>
+
               </form>
 {% endblock %}

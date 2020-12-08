@@ -16,7 +16,7 @@ urlpatterns = [ path('', TemplateView.as_view(template_name='home.html'), name='
                path('password_reset/done', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
                path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
                path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
-               # path('profile/<str:slug>/', views.ProfileView.as_view(), name='profile'),
+               path('profile/<int:pk>/', views.ProfileView.as_view(), name='profile'),
                path('update/<int:pk>/',views.UpdateUserView.as_view(), name='update'),
                ]
 

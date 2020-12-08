@@ -18,17 +18,16 @@ class Login(auth_views.LoginView):
 
 
 
-class ProfileView(generic.DetailView):
+class ProfileView(generic.UpdateView):
     model = CustomUser
+    form_class = CustomUserChangeForm
+    success_url = reverse_lazy('home')
     template_name = 'registration/profile.html'
-    pk_url_kwarg = 'CustomUser_pk'
 
-    def get_object(self, pk):
-        return get_object_or_404(CustomUser, pk=pk)
 
 class UpdateUserView(generic.UpdateView):
     model = CustomUser
     form_class = CustomUserChangeForm
-    # fields = ['first_name','last_name','photo','about']
+    success_url = reverse_lazy('home')
     template_name = 'registration/update.html'
 
