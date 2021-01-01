@@ -9,8 +9,8 @@
     </div>
               <form method="post" enctype="multipart/form-data">
               {% csrf_token %}
-<div class="row justify-content-center">
-    <div class="col-4">
+<div class="row">
+    <div class="col-4 text-center">
     <table>
         <tr><td>
         {% if form.instance.photo %}
@@ -23,7 +23,7 @@
             <button type="button" name="photo-clear" id="photo-clear_id" class="btn btn-primary">Delete</button>
             </td></tr>
             <tr><td>
-        <input type="file" name="photo" accept="image/*" id="id_photo" >
+        <input type="file" name="photo" accept="image/*" id="id_photo">
             </td></tr>
     </table>
       </div>
@@ -38,8 +38,7 @@
     <tr><th><label for="id_last_name">Last name:</label></th><td><input type="text" name="last_name" value="{{ form.instance.last_name }}" maxlength="30" required id="id_last_name"></td></tr>
    <tr><th><label for="id_country">Country:</label></th><td><input type="text" name="country" value="{{ form.instance.country }}" maxlength="30" required id="id_country"></td></tr>
 
-    <tr><th><label for="id_about">About:</label></th><td><textarea name="about" cols="40" rows="10" maxlength="300" id="id_about" value="{{ form.instance.about }}">
-    </textarea></td></tr>
+    <tr><th><label for="id_about">About:</label></th><td><textarea name="about" cols="40" rows="10" maxlength="300" id="id_about">{{ form.instance.about }}</textarea></td></tr>
 </table>
             <button type="submit" class="btn btn-primary">Update</button>
             <a href="{% url 'home' %}" class="btn btn-secodary">Cancel</a>

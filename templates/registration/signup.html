@@ -4,27 +4,49 @@
 
 {% block content %}
     <div class="row">
-    <h1>Registration</h1>
+        <h2>Registration</h2>
+
     </div>
-              <form method="post">
+              <form method="post" enctype="multipart/form-data">
               {% csrf_token %}
 <div class="row justify-content-center">
     <div class="col-4">
-
-
+    <table>
+        <tr><td>
+        {% if form.instance.photo %}
+            <img class="photo" src="{% static form.instance.photo.url %}" width=150, height=200 border=3>
+        {% else %}
             <img class="photo" src="{% static '/images/usernophoto.jpg' %}" width=150, height=200 border=2>
+        {% endif %}
+        </td></tr>
+        <tr><td>
+            <button type="button" name="photo-clear" id="photo-clear_id" class="btn btn-primary">Delete</button>
+            </td></tr>
+            <tr><td>
+        <input type="file" name="photo" accept="image/*" id="id_photo" >
+            </td></tr>
+    </table>
       </div>
     <div class="col-7">
       <div class="card">
         <div class="card-body">
                 <table>
- {{ form.as_table }}
+                        <tr>
+                            <td></td>
+                        </tr>
+     <tr><th><label for="id_first_name">First name:</label></th><td><input type="text" name="first_name" value="{{ form.instance.first_name }}" maxlength="30" required id="id_first_name"></td></tr>
+    <tr><th><label for="id_last_name">Last name:</label></th><td><input type="text" name="last_name" value="{{ form.instance.last_name }}" maxlength="30" required id="id_last_name"></td></tr>
+   <tr><th><label for="id_country">Country:</label></th><td><input type="text" name="country" value="{{ form.instance.country }}" maxlength="30" required id="id_country"></td></tr>
+   <tr><th><label for="id_email">E-Mail:</label></th><td><input type="text" name="email" value="{{ form.instance.email }}" maxlength="30" required id="id_email"></td></tr>
+   <tr><th><label for="id_password1">Password:</label></th><td><input type="password" name="password1" value="{{ form.instance.password1 }}" maxlength="30" required id="id_password1"></td></tr>
+                    <tr><th><label for="id_password2">Repeat password:</label></th><td><input type="password" name="password2" value="{{ form.instance.password2 }}" maxlength="30" required id="id_password2"></td></tr>
 </table>
-            <button type="submit" class="btn btn-primary">Sign up</button>
+            <button type="submit" class="btn btn-primary">Update</button>
             <a href="{% url 'home' %}" class="btn btn-secodary">Cancel</a>
         </div>
       </div>
     </div>
   </div>
+
               </form>
 {% endblock %}

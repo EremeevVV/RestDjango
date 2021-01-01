@@ -6,6 +6,14 @@ from django.utils import timezone
 
 from .managers import CustomUserManager
 
+class Event(models.Model):
+    title = models.CharField(max_length=50)
+
+    class Meta:
+        ordering = ['title']
+
+    def __str__(self):
+        return self.title
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     url_height = models.PositiveIntegerField(null=True)
@@ -24,6 +32,15 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     )
                                )
     about = models.TextField(verbose_name='about', null=True, blank=True, max_length=300)
+    pincode = models.CharField(max_length=4,blank=True)
+    role = models.CharField(max_length=300, choices=(
+        ('A', 'Admin'),
+        ('E', 'Expert'),
+        ('C', 'Competitor'),
+        ('N', 'No role'),
+    )
+                            ,default=('N', 'No role'))
+    event = models.ForeignKey(Event, on_delete=models.SET_NULL,null=True, blank=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
@@ -31,6 +48,9 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     EMAIL_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
     objects = CustomUserManager()
+
+    class Meta():
+        ordering = ['date_joined']
 
     def __str__(self):
         return self.email
@@ -40,4 +60,3 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.last_name
-

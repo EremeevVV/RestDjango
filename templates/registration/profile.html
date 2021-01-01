@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="row">
-        <h2> {{ form.instance.email }}/Profile</h2>
+        <h2> {{ form.instance.email }}</h2>
 
     </div>
               <form method="post" enctype="multipart/form-data">
@@ -19,22 +19,20 @@
             <img class="photo" src="{% static '/images/usernophoto.jpg' %}" width=150, height=200 border=2>
         {% endif %}
         </td></tr>
+    </tr>
+            <tr><td>
+        <input type="file" name="photo" accept="image/*" id="id_photo">
+            </td></tr>
         <tr><td>
             <button type="button" name="photo-clear" id="photo-clear_id" class="btn btn-primary">Delete</button>
-            </td></tr>
-            <tr><td>
-        <input type="file" name="photo" accept="image/*" id="id_photo" >
-            </td></tr>
+            </td>
     </table>
       </div>
     <div class="col-7">
-      <div class="card">
-        <div class="card-body">
-                  <div class="card">
+                  <div class="card border-dark mb-3">
+                      <div class="card-header bg-secondary ">Login information</div>
+                        <div class="card-body">
                       <table>
-                              <tr bgcolor="#d3d3d3">
-                                  <th>Login Information</th>
-                              </tr>
                           <tr>
                               <td>E-Mail:</td>
                               <td>{{ form.instance.email }}</td>
@@ -44,23 +42,55 @@
                               <td>*******</td>
                           </tr>
                       </table>
+                        </div>
                   </div>
-                <table>
-                        <tr>
-                            <td></td>
-                        </tr>
-     <tr><th><label for="id_first_name">First name:</label></th><td><input type="text" name="first_name" value="{{ form.instance.first_name }}" maxlength="30" required id="id_first_name"></td></tr>
-    <tr><th><label for="id_last_name">Last name:</label></th><td><input type="text" name="last_name" value="{{ form.instance.last_name }}" maxlength="30" required id="id_last_name"></td></tr>
-   <tr><th><label for="id_country">Country:</label></th><td><input type="text" name="country" value="{{ form.instance.country }}" maxlength="30" required id="id_country"></td></tr>
-
-    <tr><th><label for="id_about">About:</label></th><td><textarea name="about" cols="40" rows="10" maxlength="300" id="id_about" value="{{ form.instance.about }}">
-    </textarea></td></tr>
-</table>
-            <button type="submit" class="btn btn-primary">Update</button>
-            <a href="{% url 'home' %}" class="btn btn-secodary">Cancel</a>
+                          <div class="card border-dark mb-3">
+                              <div class="card-header bg-secondary">Profile information</div>
+                              <div class="card-body">
+                              <table>
+                          <tr>
+                              <td>First name:</td>
+                              <td>{{ form.instance.first_name }}</td>
+                          </tr>
+                          <tr>
+                              <td>Last name:</td>
+                              <td>{{ form.instance.last_name }}</td>
+                          </tr>
+                          <tr>
+                              <td>Country:</td>
+                              <td>{{ form.instance.country }}</td>
+                          </tr>
+                          <tr>
+                              <td>About:</td>
+                              <td>{{ form.instance.about }}</td>
+                          </tr>
+                      </table>
+                  </div>
+                          </div>
+                                 <div class="card border-dark mb-3">
+                                     <div class="card-header bg-secondary" >Personal Identification Number</div>
+                                     <div class="card-body">
+                      <table>
+                          <tr>
+                              <td>PIN:</td>
+                              <td width="100%" align="right"><a href="{% url 'pin' form.instance.id %}" class="btn btn-secondary">
+                                  {% if form.instance.pincode %}
+                                  Reset PIN
+                                  {% else %}
+                                  Set PIN
+                                  {% endif %}
+                              </a></td>
+                          </tr>
+                      </table>
+                                     </div>
+                                 </div>
+                  </div>
+            <div>
+            <a href="{% url 'home' %}" class="btn btn-primary">Ok</a>
+            <a href="{% url 'home' %}" class="btn btn-primary">Cancel</a>
+            </div>
         </div>
-      </div>
-    </div>
+
   </div>
 
               </form>

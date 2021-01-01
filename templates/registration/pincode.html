@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+        <h2> {{ form.instance.email }}/PIN</h2>
+
+    </div>
+              <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+
+<div class="row">
+    <div class="col-4 text-center">
+      </div>
+    <div class="col-7">
+      <div class="card">
+        <div class="card-body">
+                <table>
+                        <tr>
+                            <td></td>
+                        </tr>
+     <tr> <th>{{ form.pincode.label_tag }}</th>
+        <td>
+          {{ form.pincode.errors }}
+          {{ form.pincode }}
+     </tr>
+                    <tr>
+                        <small>{{ form.pincode.help_text }}</small>
+                    </tr>
+</table>
+            <button type="submit" class="btn btn-primary">Ok</button>
+            <a href="{% url 'home' %}" class="btn btn-secodary">Cancel</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+              </form>
+{% endblock %}
