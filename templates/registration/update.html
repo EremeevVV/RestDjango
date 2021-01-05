@@ -34,11 +34,11 @@
                         <tr>
                             <td></td>
                         </tr>
-     <tr><th><label for="id_first_name">First name:</label></th><td><input type="text" name="first_name" value="{{ form.instance.first_name }}" maxlength="30" required id="id_first_name"></td></tr>
-    <tr><th><label for="id_last_name">Last name:</label></th><td><input type="text" name="last_name" value="{{ form.instance.last_name }}" maxlength="30" required id="id_last_name"></td></tr>
-   <tr><th><label for="id_country">Country:</label></th><td><input type="text" name="country" value="{{ form.instance.country }}" maxlength="30" required id="id_country"></td></tr>
+     <tr><th><label for="id_first_name">First name:</label></th><td>{{ form.first_name }}</td></tr>
+    <tr><th><label for="id_last_name">Last name:</label></th><td>{{ form.last_name }}</td></tr>
+   <tr><th><label for="id_country">Country:</label></th><td>{{ form.country }}</td></tr>
 
-    <tr><th><label for="id_about">About:</label></th><td><textarea name="about" cols="40" rows="10" maxlength="300" id="id_about">{{ form.instance.about }}</textarea></td></tr>
+    <tr><th><label for="id_about">About:</label></th><td>{{ form.about }}</td></tr>
 </table>
             <button type="submit" class="btn btn-primary">Update</button>
             <a href="{% url 'home' %}" class="btn btn-secodary">Cancel</a>

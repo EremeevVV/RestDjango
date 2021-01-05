@@ -34,14 +34,14 @@
                         <tr>
                             <td></td>
                         </tr>
-     <tr><th><label for="id_first_name">First name:</label></th><td><input type="text" name="first_name" value="{{ form.instance.first_name }}" maxlength="30" required id="id_first_name"></td></tr>
-    <tr><th><label for="id_last_name">Last name:</label></th><td><input type="text" name="last_name" value="{{ form.instance.last_name }}" maxlength="30" required id="id_last_name"></td></tr>
-   <tr><th><label for="id_country">Country:</label></th><td><input type="text" name="country" value="{{ form.instance.country }}" maxlength="30" required id="id_country"></td></tr>
-   <tr><th><label for="id_email">E-Mail:</label></th><td><input type="text" name="email" value="{{ form.instance.email }}" maxlength="30" required id="id_email"></td></tr>
-   <tr><th><label for="id_password1">Password:</label></th><td><input type="password" name="password1" value="{{ form.instance.password1 }}" maxlength="30" required id="id_password1"></td></tr>
-                    <tr><th><label for="id_password2">Repeat password:</label></th><td><input type="password" name="password2" value="{{ form.instance.password2 }}" maxlength="30" required id="id_password2"></td></tr>
+     <tr><th><label for="id_first_name">First name:</label></th><td>{{ form.first_name }}</td></tr>
+    <tr><th><label for="id_last_name">Last name:</label></th><td>{{ form.last_name }}</td></tr>
+   <tr><th><label for="id_country">Country:</label></th><td>{{ form.country }}</td></tr>
+   <tr><th><label for="id_email">E-Mail:</label></th><td>{{ form.email }}</td></tr>
+   <tr><th><label for="id_password1">Password:</label></th><td>{{ form.password1 }}</td></tr>
+                    <tr><th><label for="id_password2">Repeat password:</label></th><td>{{ form.password2 }}</td></tr>
 </table>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary">SignUp</button>
             <a href="{% url 'home' %}" class="btn btn-secodary">Cancel</a>
         </div>
       </div>

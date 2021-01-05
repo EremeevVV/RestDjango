@@ -16,7 +16,7 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
-        fields = ['first_name', 'last_name', 'photo', 'about']
+        fields = ['first_name', 'last_name', 'country', 'photo', 'about']
 
 class PinCodeForm(UserChangeForm):
     pincode = forms.CharField(max_length=4, validators=[RegexValidator(regex=r'^\d{4}$',
