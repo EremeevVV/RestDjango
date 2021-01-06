@@ -1,9 +1,9 @@
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.views.generic.base import TemplateView
-from rest_framework import routers
 from django.conf.urls.static import static
 from django.conf import settings
+from rest_framework.routers import DefaultRouter
 
 from . import views
 
@@ -25,3 +25,7 @@ urlpatterns = [ path('', TemplateView.as_view(template_name='home.html'), name='
                 ]
 
 urlpatterns += static(settings.MEDIA_URL, documents_root = settings.MEDIA_ROOT)
+
+router = DefaultRouter()
+router.register(r'api/user', views.UserViewSet, basename='user')
+urlpatterns += router.urls
